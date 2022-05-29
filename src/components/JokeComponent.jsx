@@ -6,20 +6,15 @@ function JokeComponent() {
 
  useEffect(() => {
   getJokes()
-  console.log(jokes)
-
-},[jokes])
+},[])
   
- const getJokes =async() => {
+ const getJokes =() => {
    
-     await JokeService.getJokes().then((response) =>{
+     JokeService.getJokes().then((response) =>{
       console.log("hi");
-      if(response.data){
-        setJokes(response.data.jokesWithComments);
-        }
-      //console.log(response.data.jokeWithComments)
-     // 
-
+       setJokes(response.data.jokes);
+      // console.log(response.data.jokes)
+      console.log(jokes)
     });
   };
   

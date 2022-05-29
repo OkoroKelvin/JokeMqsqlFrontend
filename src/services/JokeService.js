@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const JOKE_API_BASE_URL ="http://localhost:8080/api/v1/jokes";
+const JOKE_API_BASE_URL ="http://localhost:8080/api/v1/onlyJoke";
 
 class JokeService{
     getJokes(){
