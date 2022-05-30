@@ -3,12 +3,13 @@ import {useNavigate} from "react-router-dom";
 
 function LandingPage() {
     const navigate = useNavigate();
+
     const handleNext = () => {
         navigate(
             {pathname: "/menu"}
         )
     }
-
+  
     return (
         <div>
             <div>

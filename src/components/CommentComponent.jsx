@@ -1,11 +1,13 @@
-
 import React, { useState} from 'react';
+import { useParams } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
 import JokeService from '../services/JokeService';
 
-function AddJoke () {
+function CommentComponent() {
 
-    const [content,setContents] = useState('')
+    const [words,setComment] = useState('')
+    const {id} = useParams(); 
+
     const navigate = useNavigate();
 
     const handleNext = () => {
@@ -14,12 +16,13 @@ function AddJoke () {
         )
     }
 
-    const saveJoke = (e) => {
+
+    const createComment = (e) => {
         e.preventDefault();
-        const joke = {content}
+        const savedComment = {words}
         
 
-        JokeService.createJokes(joke).then((respond) =>{
+        JokeService.createComment(id,savedComment).then((respond) =>{
             console.log(respond.data);
             handleNext();
 
@@ -28,8 +31,10 @@ function AddJoke () {
         })
 
     }
-    
-    return (
+
+
+
+  return (
     <div>
 
        <br></br>
@@ -40,18 +45,18 @@ function AddJoke () {
                     <div className="card-body">
                         <form>
                             <div className="form-group mb-2">
-                                <label className = "form-label">Joke Contents</label>
+                                <label className = "form-label">Comment</label>
                                   <input
                                   type = "text"
-                                  placeholder = "Enter Joke contents"
-                                  name = "content"
+                                  placeholder = "Enter your comment"
+                                  name = "words"
                                   className="form-control"
-                                  value = {content}
-                                  onChange = {(e)=> setContents(e.target.value)}>
+                                  value = {words}
+                                  onChange = {(e)=> setComment(e.target.value)}>
                                   </input>
                             </div>
 
-                            <button className="btn btn-success"onClick = {(e) => saveJoke(e)}> submit</button>
+                            <button className="btn btn-success"onClick = {(e) => createComment(e)}> submit</button>
 
                         </form>
 
@@ -60,7 +65,7 @@ function AddJoke () {
             </div>
         </div>
     </div>
-    );
+    
+  )
 }
-
-export default AddJoke;
+export default CommentComponent

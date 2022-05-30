@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { Link} from 'react-router-dom'
 import JokeService from '../services/JokeService'
 
-function JokeComponent() {
+function JokeComponent(props) {
   const [jokes,setJokes] = useState([])
+  
+  
 
  useEffect(() => {
   getJokes()
 },[])
+
+
   
  const getJokes =() => {
    
@@ -17,7 +22,6 @@ function JokeComponent() {
       console.log(jokes)
     });
   };
-  
 
   return (
     <div className="container">
@@ -25,7 +29,7 @@ function JokeComponent() {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Joke Id</th>
+            
             <th>Joke Content</th>
             <th>Joke Created Date</th>
             <th>Joke likes</th>
@@ -36,12 +40,18 @@ function JokeComponent() {
             jokes.map(
               joke => 
               <tr key = {joke.id}>
-                <td>{joke.id}</td>
                 <td>{joke.content}</td>
                 <td>{joke.createdDate}</td>
                 <td>{joke.likes}</td>
-
-
+                <td>
+                  <Link className="btn btn-info" to={`/comment/${joke.id}`} size="sm">Comment</Link>
+                </td>
+                <td><button className="btn btn-primary" size="sm">View Comment</button></td>
+                <td><button className="btn btn-primary" size="sm">Delete</button></td>
+                <td>
+                  <button className="btn btn-primary" size="sm">Like</button>
+                  </td>
+                                      
               </tr>
 
             )
