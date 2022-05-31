@@ -1,9 +1,9 @@
 import axios from 'axios';
-
-const JOKE_API_BASE_URL ="http://localhost:8080/api/v1/jokes";
-const MOST_JOKE_API_BASE_URL = "http://localhost:8080/api/v1/jokes/most"
-const LEAST_JOKE_API_BASE_URL = "http://localhost:8080/api/v1/jokes/least"
-const COMMENT_JOKE_API_BASE_URL = "http://localhost:8080/api/v1/jokes/comment"
+const baseUrl = "https://joke-backend-kel.herokuapp.com"
+const JOKE_API_BASE_URL =baseUrl +"/api/v1/jokes";
+const MOST_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/most"
+const LEAST_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/least"
+const COMMENT_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/comment"
 
 class JokeService{
     getJokes(){
