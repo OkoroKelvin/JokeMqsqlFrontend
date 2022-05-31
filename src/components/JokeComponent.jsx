@@ -23,6 +23,25 @@ function JokeComponent(props) {
     });
   };
 
+  const deleteJoke = (jokeId)=>{
+    JokeService.deleteJoke(jokeId).then((response)=>{
+      getJokes();
+
+    }).catch(error =>{
+      console.log(error);
+    })
+
+  }
+
+
+  const likeJoke =(jokeId)=>{
+    JokeService.likeJokes(jokeId).then((respond)=>{
+      getJokes();
+    }).catch(error =>{
+      console.log(error);
+    })
+  }
+
   return (
     <div className="container">
       <h1 className="text-center"> List of Jokes</h1>
@@ -46,10 +65,14 @@ function JokeComponent(props) {
                 <td>
                   <Link className="btn btn-info" to={`/comment/${joke.id}`} size="sm">Comment</Link>
                 </td>
-                <td><button className="btn btn-primary" size="sm">View Comment</button></td>
-                <td><button className="btn btn-primary" size="sm">Delete</button></td>
                 <td>
-                  <button className="btn btn-primary" size="sm">Like</button>
+                  <Link className="btn btn-info" to={`/view-comment/${joke.id}`} size="sm">View Comment</Link>
+                  </td>
+                <td>
+                <button className="btn btn-danger" onClick={()=> deleteJoke(joke.id)} size="sm">Delete</button>
+                  </td>
+                <td>
+                  <button className="btn btn-primary"onClick={()=> likeJoke(joke.id)} size="sm">Like</button>
                   </td>
                                       
               </tr>

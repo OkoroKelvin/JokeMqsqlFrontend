@@ -12,11 +12,28 @@ function MenuPage(props) {
             {pathname: "/jokes"}
         )
     }
+
     const addJoke = () => {
         navigate(
             {pathname: "/add-joke"}
         )
     }
+
+    const viewMostLikedJoke = ()=>{
+        navigate(
+            {pathname: "/jokes/most"}
+        )
+
+    }
+
+    const viewLeastLikedJoke = ()=>{
+        navigate(
+            {pathname: "/jokes/least"}
+        )
+
+    }
+
+
     return ( 
         <div>
             <div>
@@ -32,6 +49,22 @@ function MenuPage(props) {
             <div>
         
                 <button type="button" class="btn btn-primary" onClick={handleNext}>View all Joke</button>
+                
+            </div>
+
+            <br></br>
+
+            <div>
+        
+                <button type="button" class="btn btn-primary" onClick={viewMostLikedJoke}>View Most Like Joke</button>
+                
+            </div>
+
+             <br></br>
+
+            <div>
+        
+                <button type="button" class="btn btn-primary" onClick={viewLeastLikedJoke}>View Least Like Joke</button>
                 
             </div>
             
