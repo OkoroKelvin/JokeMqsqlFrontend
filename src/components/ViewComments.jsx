@@ -22,6 +22,14 @@ function ViewComments(props) {
 
     };
 
+    const deleteComment = (commentId)=>{
+        JokeService.deleteComment(commentId).then((response)=>{
+            getJokeComments();
+        }).catch(error=>{
+            console.log(error);
+        })
+    }
+
 
   return (
     <div className="container">
@@ -39,7 +47,7 @@ function ViewComments(props) {
               <tr key = {comment.id}>
                 <td>{comment.comment}</td>
                 <td>
-                <button className="btn btn-danger" size="sm">Delete</button>
+                <button className="btn btn-danger"  onClick={()=> deleteComment(comment.id)} size="sm">Delete</button>
                 </td>                        
               </tr>
 

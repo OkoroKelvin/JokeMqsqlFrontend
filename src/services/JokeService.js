@@ -5,7 +5,9 @@ const MOST_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/most"
 const LEAST_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/least"
 const COMMENT_JOKE_API_BASE_URL = baseUrl+"/api/v1/jokes/comment"
 
+
 class JokeService{
+
     getJokes(){
         return axios.get(JOKE_API_BASE_URL);
     }
@@ -26,8 +28,8 @@ class JokeService{
         return axios.delete(JOKE_API_BASE_URL+'/'+jokeId)
     }
 
-    deleteComment(jokeId){
-        return axios.delete(JOKE_API_BASE_URL+'/'+jokeId)
+    deleteComment(commentId){
+        return axios.delete(COMMENT_JOKE_API_BASE_URL+'/'+commentId)
     }
 
     getMostLikeJokes(){
