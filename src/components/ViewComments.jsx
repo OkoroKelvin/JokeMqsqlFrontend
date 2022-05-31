@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import JokeService from '../services/JokeService'
 
 function ViewComments(props) {
     const [comments,setComments] = useState([])
+
+    const {id} = useParams(); 
+
 
     useEffect(() => {
         getJokeComments()
@@ -11,9 +15,8 @@ function ViewComments(props) {
 
 
     const getJokeComments =() =>{
-        JokeService.getCommentsOfJoke().then((response)=>{
-            console.log("hi");
-            setComments(response.data.comments.comment)
+        JokeService.getCommentsOfJoke(id).then((response)=>{
+            setComments(response.data.comments)
             console.log(comments)
         });
 
@@ -35,11 +38,9 @@ function ViewComments(props) {
               comment => 
               <tr key = {comment.id}>
                 <td>{comment.comment}</td>
-               
                 <td>
                 <button className="btn btn-danger" size="sm">Delete</button>
-                </td>
-                                         
+                </td>                        
               </tr>
 
             )
